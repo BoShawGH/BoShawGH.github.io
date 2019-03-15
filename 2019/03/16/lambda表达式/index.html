@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="小站">
 <meta property="og:description" content="lambda表达式为什么引入lambda表达式lambda表达式是一个可传递的代码块，可以在以后执行一次或多次。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-15T16:11:25.073Z">
+<meta property="og:updated_time" content="2019-03-15T16:12:22.903Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lambda表达式">
 <meta name="twitter:description" content="lambda表达式为什么引入lambda表达式lambda表达式是一个可传递的代码块，可以在以后执行一次或多次。">
@@ -382,7 +382,7 @@
                 
               
 
-              <time title="Created: 2019-03-16 00:09:28 / Modified: 00:11:25" itemprop="dateCreated datePublished" datetime="2019-03-16T00:09:28+08:00">2019-03-16</time>
+              <time title="Created: 2019-03-16 00:09:28 / Modified: 00:12:22" itemprop="dateCreated datePublished" datetime="2019-03-16T00:09:28+08:00">2019-03-16</time>
             
 
             
@@ -440,7 +440,7 @@
 <p>如果方法只有一参数，而且这个参数的类型可以推导得出，那么甚至还可以省略小括号:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ActionListener listener = event -&gt;</span><br><span class="line">System.out.println(<span class="string">"The time is "</span> + <span class="keyword">new</span> Date()<span class="string">"); System.out</span></span><br><span class="line"><span class="string">// Instead of (event) -&gt; . . . or (ActionEvent event) -&gt; . . .</span></span><br></pre></td></tr></table></figure>
 <p>无需指定<code>lambda</code>表达式的返回类型。<code>lambda</code>表达式的返回类型总是会由上下文推导得出。例如，下面的表达式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(String first, String second) -&gt; first.lengthO - second.lengthO</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(String first, String second) -&gt; first.length() - second.length()</span><br></pre></td></tr></table></figure>
 <p>可以在需要int类型结果的上下文中使用。</p>
 <p><strong>注释</strong>: 如果一个 lambda 表达式只在某些分支返回一个值， 而在另外一些分支不返回值， 这是不合法的。 例 如，(int x) -&gt; { if (x &gt;= 0) return 1; } 就不合法。</p>
 <p>程序清单：</p>
