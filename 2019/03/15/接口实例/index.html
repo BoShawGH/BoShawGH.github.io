@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="接口示例 接口与回调回调(callback)指某个特定事件发生时应该采取的动作。java.swing包中有一个Timer类，可以在在到达给定的时间间隔发出通知。定时器需要调用的方法需要传递对象所属的类实现了java.swing包中的ActionListener接口：">
+<meta name="keywords" content="java学习,接口、lambda表达式与内部类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="接口示例">
+<meta property="og:url" content="http://yoursite.com/2019/03/15/接口实例/index.html">
+<meta property="og:site_name" content="小站">
+<meta property="og:description" content="接口示例 接口与回调回调(callback)指某个特定事件发生时应该采取的动作。java.swing包中有一个Timer类，可以在在到达给定的时间间隔发出通知。定时器需要调用的方法需要传递对象所属的类实现了java.swing包中的ActionListener接口：">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/03/15/接口实例/接口实例/6.2-拷贝和克隆.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/15/接口实例/接口实例/6.2-浅拷贝.png">
+<meta property="og:updated_time" content="2019-03-15T15:21:56.737Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="接口示例">
+<meta name="twitter:description" content="接口示例 接口与回调回调(callback)指某个特定事件发生时应该采取的动作。java.swing包中有一个Timer类，可以在在到达给定的时间间隔发出通知。定时器需要调用的方法需要传递对象所属的类实现了java.swing包中的ActionListener接口：">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/15/接口实例/接口实例/6.2-拷贝和克隆.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/15/接口实例/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>接口示例 | 小站</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a253dacf21dd71c8407ef9b8a6b3505c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">生命不息，折腾不止</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>About</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/接口实例/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="BoShaw">
+      <meta itemprop="description" content="个人小站">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">接口示例
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-15 23:00:41 / Modified: 23:21:56" itemprop="dateCreated datePublished" datetime="2019-03-15T23:00:41+08:00">2019-03-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="接口示例"><a href="#接口示例" class="headerlink" title="接口示例"></a><strong>接口示例</strong></h1><h2 id="接口与回调"><a href="#接口与回调" class="headerlink" title=" 接口与回调"></a><strong> 接口与回调</strong></h2><p>回调(<code>callback</code>)指某个特定事件发生时应该采取的动作。<br><code>java.swing</code>包中有一个<code>Timer</code>类，可以在在到达给定的时间间隔发出通知。定时器需要调用的方法需要传递对象所属的类实现了<code>java.swing</code>包中的<code>ActionListener</code>接口：</p>
+<a id="more"></a>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ActionListener</span></span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent event)</span></span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">下面就是一个接口回调的例子，程序给出了定时器和监听器的操作行为。</span><br><span class="line"></span><br><span class="line">`程序<span class="number">1</span>.timer/TimerTest.java`</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line"><span class="keyword">package</span> timer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.event.*;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">import</span> javax.swing.*;</span><br><span class="line"><span class="keyword">import</span> javax.swing.Timer; <span class="comment">// To resolve confilct with java.util.Timer</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimerTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        ActionListener listener = <span class="keyword">new</span> TimerPrinter();</span><br><span class="line">        Timer t = <span class="keyword">new</span> Timer(<span class="number">10000</span>, listener);</span><br><span class="line">        t.start();</span><br><span class="line">        JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="string">"Quit program?"</span>);</span><br><span class="line">        System.exit(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TimerPrinter</span> <span class="keyword">implements</span> <span class="title">ActionListener</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent event)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"At the tone, the time is "</span>+ <span class="keyword">new</span> Date());</span><br><span class="line">        Toolkit.getDefaultToolkit().beep();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>javax.swing.JOptionPane 1.2</strong></p>
+<ul>
+<li><code>static void showMessageDialog(Component parent, Object message)</code>显示一个包含一条消息和 OK 按钮的对话框。 这个对话框将位于其 parent 组件的中央。如果parent为mull, 对话框将显示在屏幕的中央.</li>
+</ul>
+<p><strong>javax.swing.Timer 1.2</strong></p>
+<ul>
+<li><code>Timer(int interval, ActionListener listener)</code><br>构造一个定时器，每隔interval毫秒通告 listener一次.</li>
+<li><code>void start()</code><br>启动定时器一旦启动成功，定时器将调用监听器的actionPerformed。</li>
+<li><code>void stop()</code><br>停止定时器。一旦停止成功，定时器将不再调用监听器actionPerformed。</li>
+</ul>
+<p><strong>java.awt.Toolkit 1.0</strong></p>
+<ul>
+<li><code>static Toolkit getDefaultToolkit()</code><br>获得默认的工具箱。工具箱包含有关GUI环境的信息。</li>
+<li><code>void beep()</code><br>发出一声响铃。</li>
+</ul>
+<h2 id="Comparator接口"><a href="#Comparator接口" class="headerlink" title=" Comparator接口"></a><strong> Comparator接口</strong></h2><p>&emsp;&emsp;上节介绍了如何对对象数组进行排序，前提是这些对象所属的类已经实现了<code>Comparable</code>接口。<br>&emsp;&emsp;假设我们希望按长度递增的顺序对字符串进行排序，而不是按照字典顺序进行排序，我们就需要用到比较器<code>Comparator</code>接口:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> interfave Comparator&lt;T&gt;&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(T first, T sencond)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要按长度比较字符串的，可以定义一个实现<code>Comparator&lt;String&gt;</code>的类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LengthComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">String</span>&gt;</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(String first, String second)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> first.length() - second.length();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//具体实现为：</span></span><br><span class="line">Comparator&lt;String&gt; comp = <span class="keyword">new</span> LengthComparator();</span><br><span class="line"><span class="keyword">if</span>(comp.compare(words[i], words[j]) &gt; <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p><code>注释</code>: 尽管<code>LengthComparator</code>对象没有状态，不过还是需要建立这个对象的一个实例。我们需要这个实例来调用<code>compare</code>方法 它不是一个静态方法。<br>要对一个数组排序，需要为<code>Arrays.sort</code>方法传人一个LengthComparator 对象:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String[] friends = &#123; <span class="string">"Peter"</span>, <span class="string">"Paul"</span>, <span class="string">"Mary"</span> &#125;;</span><br><span class="line">Arrays.sort(friends, <span class="keyword">new</span> LengthComparator()):</span><br></pre></td></tr></table></figure>
+<h2 id="对象克隆"><a href="#对象克隆" class="headerlink" title=" 对象克隆"></a><strong> 对象克隆</strong></h2><p>我们知道，将一个初始变量直接赋给新变量，原变量和新变量都是对同一个对象的引用：任何一个变量的改变都会引起另一个变量变化（如图1所示）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Employee original = <span class="keyword">new</span> Employee(<span class="string">"aaa"</span>, <span class="number">5000</span>);</span><br><span class="line">Employee copy = original; <span class="comment">//复制</span></span><br></pre></td></tr></table></figure>
+<p>如果想复制一个新对象，它的初始状态和original相同，但是后续操作不会影响到初始状态，则需要clone方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Employee copy = original.clone(); <span class="comment">//clone</span></span><br></pre></td></tr></table></figure>
+<p><img src="./接口实例/6.2-拷贝和克隆.png" alt="克隆和拷贝"></p>
+<p><code>**clone**</code>只是<code>Object</code>的一个<code>protected</code>方法，这意味着你的代码不能直接调用这个方法。这意味着，只有用Employee类能克隆Employee对象。<br>为说明这个问题，我们在此举个例子(Employee类如下)：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> salary;</span><br><span class="line">    <span class="keyword">private</span> Date hireday;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果直接克隆这个类的一个对象，就会出现下图中的现象：</p>
+<p><img src="./接口实例/6.2-浅拷贝.png" alt="浅拷贝"><br>这种现象被称为<code>浅拷贝</code>，默认的克隆对象只克隆了基本类型数据，并没有克隆对象内的引用对象。因此，如果想要克隆对象的同时也要克隆对象的所有子对象，就需要重新定义<code>clone</code>方法实现<code>深拷贝</code>。</p>
+<p>对于每个类，需要确定；</p>
+<ol>
+<li>默认的<code>clone</code>方法是否满足需求；</li>
+<li>是否可以在可变的子对象上调用<code>clone</code>来修改默认的<code>clone</code>一个方法；</li>
+<li>是否不该用<code>clone</code>。</li>
+</ol>
+<p>实际上第3个选项是默认选项。 如果选择第1项或第2项，类必须:</p>
+<ol>
+<li>实现 <code>Cloneable</code> 接口;</li>
+<li>重新定义 <code>clone</code> 方法， 并指定 <code>public</code> 访问修饰符。</li>
+</ol>
+<p><strong>注意</strong>：Cloneable接口是Java提供的一组标记接口 (tagging interface)之一。标记接口不包含任何方法，唯一的作用是在类型查询中使用instanceof。</p>
+<p>即使<code>clone</code>的默认实现能够满足要求，还是需要实现<code>Cloneable</code>接口，将<code>clone</code>重新定义为public， 再调用<code>super.clone()</code>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Employee <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (Employee) <span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Employee <span class="title">clone</span><span class="params">()</span> throw CloneNotSupportedException</span>&#123;</span><br><span class="line">        Employee cloned = (Employee) <span class="keyword">super</span>.clone()</span><br><span class="line">        cloned.Date = (Date) hireday.clone()</span><br><span class="line">        <span class="keyword">return</span> cloned</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果在一个对象上调用clone,但这个对象的类并没有实现Cloneable接口，Object类的clone方法就会拋出一个CloneNotSupportedException。</p>
+<p>程序1:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> clone;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">cloneTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Employee original = <span class="keyword">new</span> Employee(<span class="string">"John Q. Public"</span>, <span class="number">5000</span>);</span><br><span class="line">            original.setHireday(<span class="number">2000</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">            Employee copy1 = original.clone();</span><br><span class="line">            Employee copy2 = original.clone();</span><br><span class="line">            copy1.setHireday(<span class="number">2222</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">            copy2.raiseSalary(<span class="number">80</span>);</span><br><span class="line">            System.out.println(original.toString());</span><br><span class="line">            System.out.println(copy1.toString());</span><br><span class="line">            System.out.println(copy2.toString());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>程序2:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> clone;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> salary;</span><br><span class="line">    <span class="keyword">private</span> Date hireday;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">(String name, <span class="keyword">double</span> salary)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.salary = salary;</span><br><span class="line">        hireday = <span class="keyword">new</span> Date();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Employee <span class="title">clone</span><span class="params">()</span> throw CloneNotSupportedException</span>&#123;</span><br><span class="line">        Employee cloned = (Employee) <span class="keyword">super</span>.clone();</span><br><span class="line">        cloned.date = (hireday).clone();</span><br><span class="line">        <span class="keyword">return</span> cloned;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">raiseSalary</span><span class="params">(<span class="keyword">double</span> percent)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.salary *= (<span class="number">1</span> + percent / <span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHireday</span><span class="params">(<span class="keyword">int</span> year, <span class="keyword">int</span> month, <span class="keyword">int</span> day)</span></span>&#123;</span><br><span class="line">        Date newHireday = <span class="keyword">new</span> GregorianCalendar(year, month-<span class="number">1</span>, day).getTime();</span><br><span class="line">        hireday.setTime(newHireday.getTime());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Employee[name = "</span> + <span class="keyword">this</span>.name + <span class="string">",salary"</span> + <span class="keyword">this</span>.salary + <span class="string">", hireday"</span>+ hireday+<span class="string">"]"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java学习/" rel="tag"># java学习</a>
+          
+            <a href="/tags/接口、lambda表达式与内部类/" rel="tag"># 接口、lambda表达式与内部类</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/10/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="BoShaw">
+            
+              <p class="site-author-name" itemprop="name">BoShaw</p>
+              <div class="site-description motion-element" itemprop="description">个人小站</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/BoShawGH" title="GitHub &rarr; https://github.com/BoShawGH" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#接口示例"><span class="nav-number">1.</span> <span class="nav-text">接口示例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#接口与回调"><span class="nav-number">1.1.</span> <span class="nav-text"> 接口与回调</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparator接口"><span class="nav-number">1.2.</span> <span class="nav-text"> Comparator接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象克隆"><span class="nav-number">1.3.</span> <span class="nav-text"> 对象克隆</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">BoShaw</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.1</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
