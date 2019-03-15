@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="小站">
 <meta property="og:description" content="lambda表达式为什么引入lambda表达式lambda表达式是一个可传递的代码块，可以在以后执行一次或多次。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-15T16:12:22.903Z">
+<meta property="og:updated_time" content="2019-03-15T16:13:40.296Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lambda表达式">
 <meta name="twitter:description" content="lambda表达式为什么引入lambda表达式lambda表达式是一个可传递的代码块，可以在以后执行一次或多次。">
@@ -382,7 +382,7 @@
                 
               
 
-              <time title="Created: 2019-03-16 00:09:28 / Modified: 00:12:22" itemprop="dateCreated datePublished" datetime="2019-03-16T00:09:28+08:00">2019-03-16</time>
+              <time title="Created: 2019-03-16 00:09:28 / Modified: 00:13:40" itemprop="dateCreated datePublished" datetime="2019-03-16T00:09:28+08:00">2019-03-16</time>
             
 
             
@@ -656,9 +656,14 @@
 <td>p</td>
 <td>applyAsP</td>
 </tr>
+<tr>
+<td>PPredicate</td>
+<td>p</td>
+<td>boolean</td>
+<td>test</td>
+</tr>
 </tbody>
 </table>
-<p>PPredicate|p|boolean|test|</p>
 <p>p,q为int,long, double;P,Q为Int,Double,Long</p>
 <p>大多数标准函数式接口都提供了非抽象方法来生成或合并函数。 例如，<code>Predicate.isEqual(a)</code>等同于<code>a::equals</code>, 不过如果<code>a</code>为<code>null</code>也能正常工作。已经提供了默认方法and、or和negate来合并谓词。 例如，<code>Predicate.isEqual(8).or(Predicate.isEqual(b))</code>就等同于<code>x -&gt; a.equals(x) || b.equals(x)</code>。</p>
 <p>如果设计你自己的接口，其中只有一个抽象方法， 可以用<code>@FunctionalInterface</code>注解来标记这个接口。这样做有两个优点。如果你无意中增加了另一个非抽象方法，编译器会产生一个错误消息。另外javadoc页里会指出你的接口是一个函数式接口。</p>
