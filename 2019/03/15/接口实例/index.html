@@ -106,13 +106,13 @@
 <meta property="og:site_name" content="小站">
 <meta property="og:description" content="接口示例 接口与回调回调(callback)指某个特定事件发生时应该采取的动作。java.swing包中有一个Timer类，可以在在到达给定的时间间隔发出通知。定时器需要调用的方法需要传递对象所属的类实现了java.swing包中的ActionListener接口：">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/03/15/接口实例/接口实例/6.2-拷贝和克隆.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/15/接口实例/接口实例/6.2-浅拷贝.png">
-<meta property="og:updated_time" content="2019-03-15T15:21:56.737Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/15/接口实例/6.2-拷贝和克隆.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/15/接口实例/6.2-浅拷贝.png">
+<meta property="og:updated_time" content="2019-03-15T15:48:25.818Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="接口示例">
 <meta name="twitter:description" content="接口示例 接口与回调回调(callback)指某个特定事件发生时应该采取的动作。java.swing包中有一个Timer类，可以在在到达给定的时间间隔发出通知。定时器需要调用的方法需要传递对象所属的类实现了java.swing包中的ActionListener接口：">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/15/接口实例/接口实例/6.2-拷贝和克隆.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/15/接口实例/6.2-拷贝和克隆.png">
 
 
 
@@ -385,7 +385,7 @@
                 
               
 
-              <time title="Created: 2019-03-15 23:00:41 / Modified: 23:21:56" itemprop="dateCreated datePublished" datetime="2019-03-15T23:00:41+08:00">2019-03-15</time>
+              <time title="Created: 2019-03-15 23:00:41 / Modified: 23:48:25" itemprop="dateCreated datePublished" datetime="2019-03-15T23:00:41+08:00">2019-03-15</time>
             
 
             
@@ -459,11 +459,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Employee original = <span class="keyword">new</span> Employee(<span class="string">"aaa"</span>, <span class="number">5000</span>);</span><br><span class="line">Employee copy = original; <span class="comment">//复制</span></span><br></pre></td></tr></table></figure>
 <p>如果想复制一个新对象，它的初始状态和original相同，但是后续操作不会影响到初始状态，则需要clone方法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Employee copy = original.clone(); <span class="comment">//clone</span></span><br></pre></td></tr></table></figure>
-<p><img src="./接口实例/6.2-拷贝和克隆.png" alt="克隆和拷贝"></p>
+<p><img src="/2019/03/15/接口实例/6.2-拷贝和克隆.png" alt="克隆和拷贝"></p>
 <p><code>**clone**</code>只是<code>Object</code>的一个<code>protected</code>方法，这意味着你的代码不能直接调用这个方法。这意味着，只有用Employee类能克隆Employee对象。<br>为说明这个问题，我们在此举个例子(Employee类如下)：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> salary;</span><br><span class="line">    <span class="keyword">private</span> Date hireday;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如果直接克隆这个类的一个对象，就会出现下图中的现象：</p>
-<p><img src="./接口实例/6.2-浅拷贝.png" alt="浅拷贝"><br>这种现象被称为<code>浅拷贝</code>，默认的克隆对象只克隆了基本类型数据，并没有克隆对象内的引用对象。因此，如果想要克隆对象的同时也要克隆对象的所有子对象，就需要重新定义<code>clone</code>方法实现<code>深拷贝</code>。</p>
+<!-- ![浅拷贝](接口实例/6.2-浅拷贝.png) -->
+<p><img src="/2019/03/15/接口实例/6.2-浅拷贝.png" alt="imga"><br>这种现象被称为<code>浅拷贝</code>，默认的克隆对象只克隆了基本类型数据，并没有克隆对象内的引用对象。因此，如果想要克隆对象的同时也要克隆对象的所有子对象，就需要重新定义<code>clone</code>方法实现<code>深拷贝</code>。</p>
 <p>对于每个类，需要确定；</p>
 <ol>
 <li>默认的<code>clone</code>方法是否满足需求；</li>
